@@ -19,7 +19,7 @@ and your cron schedule decides **when** raids are allowed.
 
 ## 1. Files in this package
 
-Put all these files on your Pi in e.g. `/home/d3nd4n/dayz_raid`:
+Put all these files on your Pi in e.g. `/home/PIusername/dayz_raid`:
 
 - `raid_mode.py`
 - `cfggameplay_raid_on.json`
@@ -113,7 +113,7 @@ On Nitrado for Chernarus, this layout is correct:
 On the Pi, from the folder where `raid_mode.py` lives:
 
 ```bash
-cd /home/d3nd4n/dayz_raid
+cd /home/PIusername/dayz_raid
 
 # Switch raids OFF
 python3 raid_mode.py off
@@ -140,38 +140,54 @@ Now:
 
 ## 5. Example cron schedule (Fri/Sat/Sun 18:00–00:00)
 
-On the Pi, edit cron:
+On the Pi, edit cron: (Change PIusername!) adjust times to your server restart times. make sure the files are uploaded at least a few minutes before restarts.
 
 ```bash
 crontab -e
 ```
 
-Example combined with your ClaimBot:
-
 ```cron
-*/5 * * * * cd /home/d3nd4n/ClaimBot && /usr/bin/python3 sync_pending_claims.py >> /home/d3nd4n/ClaimBot/sync_log.txt 2>&1
 
 # --- RAID OFF BEFORE ALL RESTARTS (EVERY DAY) ---
-0 0 * * * python3 /home/d3nd4n/dayz_raid/raid_mode.py off
-5 6 * * * python3 /home/d3nd4n/dayz_raid/raid_mode.py off
-5 12 * * * python3 /home/d3nd4n/dayz_raid/raid_mode.py off
-5 18 * * * python3 /home/d3nd4n/dayz_raid/raid_mode.py off
+0 0 * * * python3 /home/PIusername/dayz_raid/raid_mode.py off
+5 6 * * * python3 /home/PIusername/dayz_raid/raid_mode.py off
+5 12 * * * python3 /home/PIusername/dayz_raid/raid_mode.py off
+5 18 * * * python3 /home/PIusername/dayz_raid/raid_mode.py off
 
 # --- RAID OFF AT END OF RAID WINDOW (23:59 FRI/SAT/SUN) ---
-59 23 * * 5 python3 /home/d3nd4n/dayz_raid/raid_mode.py off
-59 23 * * 6 python3 /home/d3nd4n/dayz_raid/raid_mode.py off
-59 23 * * 0 python3 /home/d3nd4n/dayz_raid/raid_mode.py off
+59 23 * * 5 python3 /home/PIusername/dayz_raid/raid_mode.py off
+59 23 * * 6 python3 /home/PIusername/dayz_raid/raid_mode.py off
+59 23 * * 0 python3 /home/PIusername/dayz_raid/raid_mode.py off
 
 # --- RAID ON AT 18:00 (FRI/SAT/SUN) ---
-0 18 * * 5 python3 /home/d3nd4n/dayz_raid/raid_mode.py on
-0 18 * * 6 python3 /home/d3nd4n/dayz_raid/raid_mode.py on
-0 18 * * 0 python3 /home/d3nd4n/dayz_raid/raid_mode.py on
+0 18 * * 5 python3 /home/PIusername/dayz_raid/raid_mode.py on
+0 18 * * 6 python3 /home/PIusername/dayz_raid/raid_mode.py on
+0 18 * * 0 python3 /home/PIusername/dayz_raid/raid_mode.py on
 ```
 
-- Times are server local time (your Pi uses Europe/Amsterdam now).
+- Times are server local time MAKE SURE THE PI or VPS or any machine you run this on has same server time setting as your server.
 - Always restart the DayZ server **after** a config upload for it to take effect.
 
 ---
+
+Have fun raiding only when **Your server** says it’s time. 🦌🔨 YOU NEED TO SET UP THE TIME CORRECT WITH YOUR SERVER RESTARTS. 
+
+The server used for this code had the following server restarts. 
+Make Sure to set the time on the PI or whatever server you use the same as your game server
+
+game_server_restart	Time: 00:06
+Last Run: 09-12-2025 00:06:14 UTC +01:00
+Next Run: 10-12-2025 00:06:00 UTC +01:00	Automated server restart in progress...	
+game_server_restart	Time: 06:09
+Last Run: 08-12-2025 06:10:04 UTC +01:00
+Next Run: 09-12-2025 06:09:00 UTC +01:00	Automated server restart in progress...	
+game_server_restart	Time: 12:09
+Last Run: 08-12-2025 12:09:43 UTC +01:00
+Next Run: 09-12-2025 12:09:00 UTC +01:00	Automated server restart in progress...	
+game_server_restart	Time: 18:08
+Last Run: 08-12-2025 18:08:20 UTC +01:00
+Next Run: 09-12-2025 18:08:00 UTC +01:00	Automated server restart in progress...
+
 
 ## 6. Notes
 
@@ -182,7 +198,3 @@ Example combined with your ClaimBot:
 - If Nitrado (or another host) UI overwrites cfgGameplay.json on restart:
   - Make sure you enable **Expert Mode** and **stop using the panel sliders** for base damage.
   - Your Pi + cron is now the boss for raid times.
-
-- This setup is perfect for sharing on GitHub:
-  - Simple Python, no external libraries.
-  - Only requires FTP access and cron.
