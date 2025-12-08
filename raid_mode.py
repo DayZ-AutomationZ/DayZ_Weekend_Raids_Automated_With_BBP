@@ -18,7 +18,7 @@ REMOTE_DIR_BBP = "/dayzstandalone/config/BaseBuildingPlus"
 REMOTE_CFG_BBP = "BBP_Settings.json"
 
 # === LOCAL PATHS ON YOUR PI ===
-LOCAL_DIR = Path("/home/d3nd4n/dayz_raid")  # adjust if needed
+LOCAL_DIR = Path("/home/PIusername/dayz_raid")  # adjust if needed
 
 def upload_file(ftp: ftplib.FTP, local_file: Path, remote_dir: str, remote_name: str, label: str):
     if not local_file.exists():
