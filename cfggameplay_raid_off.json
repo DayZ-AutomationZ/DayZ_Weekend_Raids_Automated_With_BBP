@@ -1,0 +1,9 @@
+{
+    "version": 123,
+    "GeneralData": {
+        "disableBaseDamage": true,
+        "disableContainerDamage": true,
+        "disableRespawnDialog": false,
+        "disableRespawnInUnconsciousness": true
+    }
+}
