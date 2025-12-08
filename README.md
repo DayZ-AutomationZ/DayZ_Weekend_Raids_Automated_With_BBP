@@ -1,10 +1,11 @@
 # DayZ_Weekend_Raids_Automated_With_BBP
 DayZ raid-mode switcher for Nitrado: a Raspberry Pi script that uploads raid-ON / raid-OFF cfggameplay.json via FTP. Automatically toggles disableBaseDamage and disableContainerDamage on a schedule (e.g. weekend raids) using cron. No extra DayZ mods required. Optional BaseBuildingPlus files. can be ignored. it will still work.
 
-# DayZ Raid Mode Switcher (cfgGameplay + BBP)
+# Automatic Weekend Raids Mode (cfgGameplay switcher + optional BaseBuildingPlus switcher)
 
 This package lets you toggle **raiding on/off** from a Raspberry Pi (or any machine with Python)
-by uploading different config files to your DayZ server via FTP.
+by uploading different config files to your DayZ server via FTP. 
+NO NEED FOR MODS!! Simple ftp uploads via PI VPS or whatever you want to use running python Can even do it on your android!
 
 It controls:
 - `cfggameplay.json`  → vanilla bases / containers (disableBaseDamage, disableContainerDamage)
