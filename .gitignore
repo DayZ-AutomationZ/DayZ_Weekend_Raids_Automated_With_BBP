@@ -1,0 +1,30 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS clutter
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*.rpt
+
+# Backups or generated configs
+*.bak
+*.backup
+*~
+
+# DayZ persistence / CE garbage (if someone clones this into their server)
+storage_*/
+*.bin
+types.bin
+events.bin
+globals.bin
+territories*
+
+# Ignore temporary test config files
+test_*.json
+temp_*.json
