@@ -86,7 +86,7 @@ Keep all other BBP values (build anywhere, cement mixers, raid times, etc.) the 
 
 ---
 
-## 3. Configure raid_mode.py
+## 3. Configure raid_mode.py ⚠️ Don’t share screenshots of this file, it contains your FTP password.
 
 Edit `raid_mode.py` and set:
 
