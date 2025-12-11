@@ -1,5 +1,13 @@
 # DayZ_Weekend_Raids_Automated_With_BBP
 
+### TL;DR
+
+1. Copy `raid_mode.py` + both `cfggameplay_raid_*.json` + both `BBP_Settings.json` to your Pi.
+2. Make the two JSONs full copies of your real `cfggameplay.json` and `BBP_Settings.json` (only toggle the 2 booleans in each).
+3. Put your FTP details into `raid_mode.py`.
+4. Test once: `python3 raid_mode.py on` / `off`.
+5. Add the cron block to `crontab -e`.
+
 DayZ raid-mode switcher for Nitrado: a Raspberry Pi script that uploads raid-ON / raid-OFF cfggameplay.json via FTP. Automatically toggles disableBaseDamage and disableContainerDamage on a schedule (e.g. weekend raids) using cron. No extra DayZ mods required. Optional BaseBuildingPlus files. can be ignored. it will still work.
 
 # Automatic Weekend Raids Mode (cfgGameplay switcher + optional BaseBuildingPlus switcher)
