@@ -2,7 +2,7 @@
 
 ### TL;DR
 
-1. Copy `raid_mode.py` + both `cfggameplay_raid_*.json` + both `BBP_Settings.json` to your Pi.
+1. Copy `raid_mode.py` + both `cfggameplay_raid_*.json` + both `BBP_raid_*.json` to your Pi.
 2. Make the two JSONs full copies of your real `cfggameplay.json` and `BBP_Settings.json` (only toggle the 2 booleans in each).
 3. Put your FTP details into `raid_mode.py`.
 4. Test once: `python3 raid_mode.py on` / `off`.
