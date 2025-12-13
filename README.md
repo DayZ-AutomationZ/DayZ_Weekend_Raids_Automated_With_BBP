@@ -41,6 +41,11 @@ Put all these files on your Pi in e.g. `/home/PIusername/dayz_raid`:
 - `BBP_raid_on.json`
 - `BBP_raid_off.json`
 - `README_RAID_MODE.md` (this file)
+- `raid_scheduler.py` (set times here) you cannot use 01:05 for example.
+- it simply is 1, 5 then best times to set are 17, 59 for example: when a server restarts 18:00
+- upload files before restart at least a few minutes!, my server restarts 18:06, so 17:59 is a safe choice.
+- dont forget to do `chmod +x /home/PIusername/dayz_raid/raid_scheduler.py` and `chmod +x /home/PIusername/dayz_raid/raid_mode.py`
+- Set the times on line 17 in `raid_scheduler.py` Line 17: `if dow in (4, 5, 6) and time(17, 59) <= t < time(23, 59):` SO `time(17, 59)` is for Raid ON `time(23, 59)` is for Raid OFF
 
 > If you don't use BaseBuildingPlus, you can ignore the BBP files.
 
@@ -162,21 +167,9 @@ crontab -e
 
 ```cron
 
-# --- RAID OFF BEFORE ALL RESTARTS (EVERY DAY) ---
-0 0 * * * python3 /home/PIusername/dayz_raid/raid_mode.py off
-5 6 * * * python3 /home/PIusername/dayz_raid/raid_mode.py off
-5 12 * * * python3 /home/PIusername/dayz_raid/raid_mode.py off
-5 18 * * * python3 /home/PIusername/dayz_raid/raid_mode.py off
+# --- RAID OFF / ON scheduler) ---
+* * * * * /usr/bin/python3 /home/Piusername/dayz_raid/raid_scheduler.py >> /home/PIusername/dayz_raid/raid_scheduler.log 2>&1
 
-# --- RAID OFF AT END OF RAID WINDOW (23:59 FRI/SAT/SUN) ---
-59 23 * * 5 python3 /home/PIusername/dayz_raid/raid_mode.py off
-59 23 * * 6 python3 /home/PIusername/dayz_raid/raid_mode.py off
-59 23 * * 0 python3 /home/PIusername/dayz_raid/raid_mode.py off
-
-# --- RAID ON AT 18:00 (FRI/SAT/SUN) ---
-0 18 * * 5 python3 /home/PIusername/dayz_raid/raid_mode.py on
-0 18 * * 6 python3 /home/PIusername/dayz_raid/raid_mode.py on
-0 18 * * 0 python3 /home/PIusername/dayz_raid/raid_mode.py on
 ```
 
 - Times are server local time MAKE SURE THE PI or VPS or any machine you run this on has same server time setting as your server.
@@ -184,23 +177,9 @@ crontab -e
 
 ---
 
-Have fun raiding only when **Your server** says it’s time. 🦌🔨 YOU NEED TO SET UP THE TIME CORRECT WITH YOUR SERVER RESTARTS. 
-
-The server used for this code had the following server restarts. 
-Make Sure to set the time on the PI or whatever server you use the same as your game server
-
-game_server_restart	Time: 00:06
-Last Run: 09-12-2025 00:06:14 UTC +01:00
-Next Run: 10-12-2025 00:06:00 UTC +01:00	Automated server restart in progress...	
-game_server_restart	Time: 06:09
-Last Run: 08-12-2025 06:10:04 UTC +01:00
-Next Run: 09-12-2025 06:09:00 UTC +01:00	Automated server restart in progress...	
-game_server_restart	Time: 12:09
-Last Run: 08-12-2025 12:09:43 UTC +01:00
-Next Run: 09-12-2025 12:09:00 UTC +01:00	Automated server restart in progress...	
-game_server_restart	Time: 18:08
-Last Run: 08-12-2025 18:08:20 UTC +01:00
-Next Run: 09-12-2025 18:08:00 UTC +01:00	Automated server restart in progress...
+Have fun raiding only when **Your server** says it’s time. 🦌🔨 YOU NEED TO SET UP THE TIME in `raid_scheduler.py`
+if your server starts around 18:00 set the time in `raid_scheduler.py` to 17:59 or even better 17:55.
+The important thing is to set the time before server restarts occur. otherwise the switched files wont load to set raids on or off. 
 
 
 ## 6. Notes
