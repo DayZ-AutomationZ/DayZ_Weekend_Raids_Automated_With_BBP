@@ -47,8 +47,6 @@ Put all these files on your Pi in e.g. `/home/PIusername/dayz_raid`:
 - dont forget to do `chmod +x /home/PIusername/dayz_raid/raid_scheduler.py` and `chmod +x /home/PIusername/dayz_raid/raid_mode.py`
 - Set the times on line 17 in `raid_scheduler.py` Line 17: `if dow in (4, 5, 6) and time(17, 59) <= t < time(23, 59):` SO `time(17, 59)` is for Raid ON `time(23, 59)` is for Raid OFF
 
-> If you don't use BaseBuildingPlus, you can ignore the BBP files.
-
 ---
 
 ## 2. Adjust the templates to your server
