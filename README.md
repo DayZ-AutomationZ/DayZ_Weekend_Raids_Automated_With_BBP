@@ -1,5 +1,5 @@
 # DayZ_Weekend_Raids_Automated_With_BBP
-[![Day-Z-Automation-Z-(1).png](https://i.postimg.cc/cC0H7Jh0/Day-Z-Automation-Z-(1).png)](https://postimg.cc/PpVTTT0R)
+[![Automationz.png](https://i.postimg.cc/G29qvGJ3/Automationz.png)](https://postimg.cc/DJkrTWMR)
 ### TL;DR
 
 1. Copy `raid_mode.py` + both `cfggameplay_raid_*.json` + both `BBP_raid_*.json` to your Pi.
